@@ -1,0 +1,86 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/star-therapeutics-content-openapi.yml + live anonymous probes of https://star-therapeutics.com/wp-json
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
+  public_read: true
+note: >-
+  The Star Therapeutics content API declares no security schemes and requires no credentials for
+  any operation catalogued in this repo. The WordPress REST index at /wp-json/ reports an empty
+  `authentication` array, which means no authentication provider (application passwords over
+  Basic, OAuth 1.0a, JWT) is registered for discovery on this deployment. Star Therapeutics
+  publishes no developer authentication documentation because it runs no developer program; the
+  read surface is simply open.
+schemes: []
+anonymous_access:
+  readable:
+  - GET /
+  - GET /wp/v2/posts
+  - GET /wp/v2/posts/{id}
+  - GET /wp/v2/pages
+  - GET /wp/v2/pages/{id}
+  - GET /wp/v2/media
+  - GET /wp/v2/media/{id}
+  - GET /wp/v2/categories
+  - GET /wp/v2/tags
+  - GET /wp/v2/avada_faq
+  - GET /wp/v2/avada_portfolio
+  - GET /wp/v2/faq_category
+  - GET /wp/v2/portfolio_category
+  - GET /wp/v2/blocks
+  - GET /wp/v2/comments
+  - GET /wp/v2/search
+  - GET /wp/v2/types
+  - GET /wp/v2/taxonomies
+  - GET /wp/v2/statuses
+  - GET /oembed/1.0/embed
+  gated:
+  - path: /wp/v2/users
+    status: 401
+    code: rest_user_cannot_view
+  - path: /wp/v2/settings
+    status: 401
+    code: rest_forbidden
+  - path: /wp/v2/menus
+    status: 401
+    code: rest_cannot_view
+  - path: /wp/v2/themes
+    status: 401
+    code: rest_cannot_view_themes
+  - path: /wp/v2/plugins
+    status: 401
+    code: rest_cannot_view_plugins
+  - path: /wp/v2/block-types
+    status: 401
+    code: rest_block_type_cannot_view
+  - path: /wp/v2/font-collections
+    status: 401
+    code: rest_cannot_read
+  - path: /wp/v2/icons
+    status: 401
+    code: rest_cannot_view
+  - path: /wp-abilities/v1/abilities
+    status: 401
+    code: rest_forbidden
+  - path: /wp-abilities/v1/categories
+    status: 401
+    code: rest_forbidden
+  - path: /jet-engine/v1/mcp
+    status: 401
+    code: rest_forbidden
+    note: JSON-RPC tools/list POST also returned 401.
+  - path: /jet-engine/v1/mcp-tools
+    status: 401
+    code: rest_forbidden
+  - path: /gravitykit/v1/abilities
+    status: 401
+    code: rest_forbidden
+  write_operations: >-
+    Every POST/PUT/PATCH/DELETE route in the 491-route index requires an authenticated WordPress
+    user. None were exercised — the pipeline reads only.
+x-evidence:
+  probed: '2026-08-05'
+  index: https://star-therapeutics.com/wp-json/
+  index_authentication_field: []

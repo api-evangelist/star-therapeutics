@@ -1,0 +1,53 @@
+generated: '2026-08-05'
+method: probed
+source: live DNS/TLS/HTTP probes of the star-therapeutics.com host and registrable domain
+note: >-
+  Probed 2026-08-05 by the API Evangelist enrichment pipeline. Only Star Therapeutics' own host and
+  registrable domain are recorded. The apis.yml humanURL for the content API points at
+  developer.wordpress.org (the upstream WordPress REST handbook that documents the wp/v2 contract);
+  that host is not operated by Star Therapeutics and its posture is deliberately excluded so it is
+  not misattributed to this provider. The site is hosted on WP Engine and fronted by Cloudflare.
+  HTTPS is enforced by redirect (http:// and www. both 301 to https://star-therapeutics.com/) but
+  no Strict-Transport-Security header is sent, so the redirect is the only downgrade protection.
+  No CAA records and no DNSSEC are published; DNS is delegated to GoDaddy (domaincontrol.com).
+hosts:
+- host: star-therapeutics.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 09:32:46 2026 GMT
+  hsts: false
+  server: cloudflare
+  origin: WP Engine (x-powered-by response header observed)
+  http_to_https_redirect: 301
+  www_redirect: 301 to apex
+  http3: true
+domains:
+- domain: star-therapeutics.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+  nameservers:
+  - ns59.domaincontrol.com
+  - ns60.domaincontrol.com
+observations:
+- >-
+  DMARC aggregate reporting is misconfigured. The published record is
+  "v=DMARC1; p=none; rua=mailto:admin@star-therapeutisc.com; ruf=mailto:admin@star-therapeutics.com"
+  — the rua (aggregate report) address is a transposed-letter typo of the company's own domain,
+  "star-therapeutisc.com", which has no nameservers and does not resolve. Aggregate DMARC reports
+  are therefore being sent to a non-existent domain and are silently lost, while the ruf (forensic)
+  address is spelled correctly. Combined with p=none this means the domain has neither enforcement
+  nor working visibility.
+- No Strict-Transport-Security header on the site root.
+- No Content-Security-Policy header on the site root.
+- No X-Content-Type-Options, X-Frame-Options, Referrer-Policy or Permissions-Policy header on the site root.
+- >-
+  API responses under /wp-json do send x-content-type-options nosniff and x-robots-tag noindex, and
+  expose Access-Control-Expose-Headers for X-WP-Total, X-WP-TotalPages, Link, Jet-Query-Total and
+  Jet-Query-Pages.
+- No /.well-known/security.txt (RFC 9116) published — see well-known/star-therapeutics-well-known.yml.
+- >-
+  No api., developer., docs., status., trust., mcp., support. or portal. subdomain resolves for
+  star-therapeutics.com (NXDOMAIN on all eight).

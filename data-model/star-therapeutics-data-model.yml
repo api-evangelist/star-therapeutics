@@ -1,0 +1,152 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/star-therapeutics-content-openapi.yml + live anonymous responses observed 2026-08-05
+note: >-
+  Entity-relationship graph derived from the schema $refs and the id-reference fields in the
+  Star Therapeutics content OpenAPI. Identifiers are plain auto-increment integers — WordPress uses
+  no prefixed id scheme — and every relationship below was confirmed against a live response.
+identifiers:
+  scheme: integer
+  detail: >-
+    All objects share one wp_posts identifier space: posts, pages and media attachments cannot
+    collide. Taxonomy terms live in a separate term space, so a category id and a post id may share
+    a number.
+entities:
+- name: Post
+  collection: /wp/v2/posts
+  operations: [listPosts, getPost]
+  count_observed: 28
+  description: >-
+    A news item. On this deployment the collection is the company press archive, spanning
+    2022-02-16 (emergence from stealth) to 2026-07-06 (Incyte completes the Vega Therapeutics
+    acquisition).
+  key_fields: [id, slug, title, content, excerpt, date, modified, status, link, categories, tags, author, featured_media]
+- name: Page
+  collection: /wp/v2/pages
+  operations: [listPages, getPage]
+  count_observed: 11
+  description: >-
+    A corporate page. Published slugs at harvest: homepage, our-approach, our-leadership, news,
+    our-careers, share-your-story, consumer-health-us, social-landing-page, members-2,
+    privacy-policy, terms-of-use.
+  key_fields: [id, slug, title, content, parent, menu_order, date, modified, link, featured_media]
+- name: MediaItem
+  collection: /wp/v2/media
+  operations: [listMedia, getMediaItem]
+  count_observed: 661
+  description: >-
+    A media library attachment — corporate imagery, press-release assets and the figures used
+    across the science and news pages.
+  key_fields: [id, slug, title, source_url, mime_type, media_type, media_details, filename, filesize, post, alt_text]
+- name: Term
+  collection: /wp/v2/categories and /wp/v2/tags
+  operations: [listCategories, getCategory, listTags]
+  count_observed: 5
+  description: >-
+    A taxonomy term. Five categories are registered — Press Release (20), News Coverage (7),
+    Presentations (1), Our Perspective (0), Uncategorized (0). The post_tag taxonomy is registered
+    but empty.
+  key_fields: [id, slug, name, taxonomy, parent, count, link]
+- name: SearchResult
+  collection: /wp/v2/search
+  operations: [searchContent]
+  count_observed: 68
+  description: >-
+    A lightweight pointer returned by cross-content search. Not a stored entity — it must be
+    resolved back to a Post, Page or MediaItem by its id and subtype.
+  key_fields: [id, title, url, type, subtype]
+- name: PostType
+  collection: /wp/v2/types
+  operations: [listPostTypes, getPostType]
+  count_observed: 19
+  description: >-
+    A registered content type. Beyond WordPress core: avada_portfolio, avada_faq,
+    elementor_library, elementor_snippet, elementskit_content, elementskit_template,
+    e-floating-buttons and jet-engine.
+  key_fields: [slug, name, rest_base, rest_namespace, taxonomies, hierarchical]
+- name: Taxonomy
+  collection: /wp/v2/taxonomies
+  operations: [listTaxonomies]
+  count_observed: 8
+  description: >-
+    A registered taxonomy — category, post_tag, nav_menu, wp_pattern_category, portfolio_category,
+    portfolio_skills, portfolio_tags, faq_category.
+  key_fields: [slug, name, types, rest_base, hierarchical]
+- name: User
+  collection: /wp/v2/users
+  operations: []
+  description: >-
+    The author entity. GATED — /wp/v2/users returns 401 rest_user_cannot_view anonymously, so no
+    author record can be resolved. The `author` integer on Post and Page is therefore a dangling
+    reference for anonymous consumers; the theme-added `author_info` object embedded on each post
+    is the only readable author signal.
+  key_fields: []
+relationships:
+- from: Post
+  to: Term
+  type: has_many
+  via: categories
+  detail: Array of category term ids; resolve with GET /wp/v2/categories/{id}.
+- from: Post
+  to: Term
+  type: has_many
+  via: tags
+  detail: Array of post_tag term ids. Always empty on this deployment.
+- from: Post
+  to: MediaItem
+  type: has_one
+  via: featured_media
+  detail: >-
+    Integer attachment id, 0 when unset. The Avada theme also inlines featured_image_src and
+    featured_image_src_square so the second request is usually unnecessary.
+- from: Post
+  to: User
+  type: belongs_to
+  via: author
+  detail: Integer user id. NOT resolvable anonymously — /wp/v2/users is 401.
+- from: Page
+  to: Page
+  type: belongs_to
+  via: parent
+  detail: Self-referential hierarchy. 0 for every page on this deployment — the page tree is flat.
+- from: Page
+  to: MediaItem
+  type: has_one
+  via: featured_media
+- from: Page
+  to: User
+  type: belongs_to
+  via: author
+  detail: NOT resolvable anonymously.
+- from: MediaItem
+  to: Post
+  type: belongs_to
+  via: post
+  detail: The post or page the attachment was uploaded to; null for library-only uploads.
+- from: Term
+  to: Term
+  type: belongs_to
+  via: parent
+  detail: Hierarchical for the category taxonomy; 0 for every category on this deployment.
+- from: SearchResult
+  to: Post
+  type: has_one
+  via: id + subtype
+  detail: Resolve by fetching /wp/v2/{subtype-rest-base}/{id}.
+- from: PostType
+  to: Taxonomy
+  type: has_many
+  via: taxonomies
+- from: Taxonomy
+  to: PostType
+  type: has_many
+  via: types
+traversal_shortcuts:
+  _embed: >-
+    Appending _embed to a collection or object request inlines author, featured media and terms
+    under _embedded, collapsing the has_one/has_many hops above into a single request. Note that
+    the author embed is empty anonymously because /wp/v2/users is 401.
+  _fields: >-
+    Appending _fields=id,slug,title,link,date trims the payload substantially — the default post
+    representation carries the full rendered content plus yoast_head markup.
+subway: null

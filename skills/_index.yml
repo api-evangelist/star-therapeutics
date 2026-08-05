@@ -1,0 +1,35 @@
+generated: '2026-08-05'
+method: generated
+source: openapi/star-therapeutics-content-openapi.yml
+note: >-
+  Packaged Agent Skills for the only public API surface Star Therapeutics exposes — the WordPress
+  REST content API behind star-therapeutics.com. Every operationId referenced below exists verbatim
+  in openapi/star-therapeutics-content-openapi.yml, which is itself derived from the provider's
+  live route index and verified against anonymous responses on 2026-08-05. Star Therapeutics
+  publishes no AGENTS.md and no skill files of its own; these are API Evangelist generations. There
+  is no write flow to package — every write route on the surface requires an authenticated
+  WordPress user.
+skills:
+- file: star-therapeutics-track-news-archive.md
+  name: Track the Star Therapeutics news archive
+  description: >-
+    Read the 28-item corporate news archive — press releases, news coverage and scientific
+    presentations, 2022-02-16 to 2026-07-06 — filtered by category and date window, with correct
+    pagination and incremental sync via modified_after.
+  api: openapi/star-therapeutics-content-openapi.yml
+  operations: [listCategories, listPosts, getPost]
+- file: star-therapeutics-search-and-resolve.md
+  name: Search Star Therapeutics content and resolve the hits
+  description: >-
+    Use cross-content search to find material across posts, pages and media without knowing where
+    it lives, then map each hit's subtype to a rest_base via /wp/v2/types and resolve it to the
+    full object.
+  api: openapi/star-therapeutics-content-openapi.yml
+  operations: [searchContent, getPost, getPage, getMediaItem, listPostTypes, listTaxonomies]
+- file: star-therapeutics-harvest-media-library.md
+  name: Harvest the Star Therapeutics media library
+  description: >-
+    Enumerate the 661-item media library, filter by media type, MIME type, parent and modification
+    date, and select the right generated size variant instead of downloading originals.
+  api: openapi/star-therapeutics-content-openapi.yml
+  operations: [listMedia, getMediaItem, listPosts]

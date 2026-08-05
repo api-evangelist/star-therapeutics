@@ -42,5 +42,35 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Star Therapeutics is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
+Star Therapeutics is a clinical-stage biotechnology company in South San Francisco, California,
+developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke
+model. Each spoke pursues a distinct area of novel biology and advances a single antibody across
+multiple related indications — a "pipeline-in-a-product" strategy. Its named spokes are Vega
+Therapeutics (VGA039, a first-in-class anti-Protein S monoclonal antibody for von Willebrand
+disease) and Electra Therapeutics (ELA-026, targeting SIRP proteins in secondary HLH). The company
+emerged from stealth in February 2022, added $90M in 2023, and closed an oversubscribed $125M
+Series D in September 2025; Incyte completed its acquisition of Vega Therapeutics in July 2026.
+
+## API surface
+
+**Star Therapeutics runs no developer program.** It publishes no product API, no developer portal,
+no API documentation, no SDKs and no OpenAPI. The only machine-readable surface reachable without
+credentials is the **WordPress REST content API** behind `star-therapeutics.com`, which serves the
+company's 28-item news archive, 11 corporate pages and 661-item media library. The OpenAPI in this
+repo is an API Evangelist derivation of the route index the site publishes at `/wp-json/`, verified
+against live anonymous responses on 2026-08-05.
+
+Notably, the site registers two agent-facing capability registries — a JetEngine MCP server at
+`/wp-json/jet-engine/v1/mcp` and the WordPress Abilities API at `/wp-json/wp-abilities/v1/` — but a
+JSON-RPC `tools/list` POST returns `401 rest_forbidden` and every abilities route returns 401. Both
+are plugin defaults bound to an authenticated WordPress user, not an agent surface the company
+publishes, so no MCP server is claimed for this provider. No agent card is served at either
+`/.well-known/agent-card.json` or `/.well-known/agent.json` (both 404).
+
+## Links
+
+- https://star-therapeutics.com/
+- https://star-therapeutics.com/news/
+- https://www.linkedin.com/company/star-tx
+- https://vegatherapeutics.com/ · https://electra-therapeutics.com/
 - https://forgeglobal.com/star-therapeutics_stock/

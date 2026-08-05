@@ -1,0 +1,43 @@
+generated: '2026-08-05'
+method: probed
+source: live GET probes of the /.well-known/ discovery surface on star-therapeutics.com
+host: https://star-therapeutics.com
+note: >-
+  Star Therapeutics publishes no /.well-known/ discovery documents. Every RFC 8615 path probed on
+  2026-08-05 returned 404. The site is WordPress on WP Engine behind Cloudflare; /.well-known/
+  paths under the WordPress rewrite return the theme 404 body, while security.txt and llms.txt
+  return the bare nginx 404 page — both are genuine misses, not SPA catch-alls answering 200.
+  Absence is recorded here as valid data. No agent card was found at either the A2A 1.0.0 canonical
+  path or the pre-0.3 legacy path, so no a2a/ artifact is written for this provider.
+documents:
+- path: /.well-known/security.txt          # RFC 9116
+  status: 404
+- path: /.well-known/openid-configuration  # OIDC discovery
+  status: 404
+- path: /.well-known/oauth-authorization-server  # RFC 8414
+  status: 404
+- path: /.well-known/api-catalog           # RFC 9727
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json       # A2A 1.0.0 canonical
+  status: 404
+- path: /.well-known/agent.json            # A2A pre-0.3 legacy
+  status: 404
+- path: /llms.txt
+  status: 404
+related:
+- path: /robots.txt
+  status: 200
+  note: Yoast-generated block; sets Crawl-delay 10 and a sitemap reference. No AI-agent directives.
+- path: /sitemap.xml
+  status: 200
+  note: Yoast XML sitemap index.
+- path: /feed/
+  status: 200
+  note: WordPress RSS 2.0 feed for the 28-item news archive. Wired in apis.yml as type BlogRSS.
+- path: /wp-json/
+  status: 200
+  note: >-
+    The WordPress REST route index — the only machine-readable contract this provider exposes.
+    Modelled in openapi/star-therapeutics-content-openapi.yml.

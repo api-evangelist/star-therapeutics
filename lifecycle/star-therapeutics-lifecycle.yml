@@ -1,0 +1,68 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/star-therapeutics-content-openapi.yml + live probes of https://star-therapeutics.com on 2026-08-05
+note: >-
+  Star Therapeutics runs no developer program, so it publishes no API versioning policy, no
+  deprecation policy, no SLA and no status page. Nothing below is asserted on the company's behalf.
+  No `StatusPage` and no `Deprecation` pointer is emitted in apis.yml, because neither exists — the
+  operational-transparency checks those pointers feed would be false credit here.
+versioning:
+  scheme: uri-path-namespace
+  current: wp/v2
+  docs: https://developer.wordpress.org/rest-api/
+  provider_policy: null
+  detail: >-
+    The version lives in the route namespace and is set by WordPress core and the installed
+    plugins, not by Star Therapeutics. Namespaces observed on 2026-08-05: oembed/1.0, wp/v2,
+    wp-site-health/v1, wp-block-editor/v1, wp-abilities/v1, jet-engine/v1, jet-engine/v2,
+    elementor/v1, elementor-pro/v1, elementor-ai/v1, elementor-one/v1, elementskit/v1, yoast/v1,
+    redirection/v1, wordfence/v1, gravityview/import/v1, gravitykit/v1, gwiz/v1, genesisblocks/v1,
+    ai1wm/v1, cookieyes/v1, cky/v1, croco/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1.
+    A plugin update can add, change or remove routes at any time with no notice to consumers.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  detail: >-
+    No RFC 8594 Sunset header and no Deprecation header observed on any response. No deprecation
+    policy is published. Route churn is inherited from upstream WordPress and plugin releases.
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  detail: >-
+    No status page. status.star-therapeutics.com is NXDOMAIN and no third-party status page
+    (Statuspage, Instatus, Better Stack) is linked from the site.
+support:
+  url: null
+  email: info@star-therapeutics.com
+  detail: >-
+    The company publishes a general corporate contact address and a phone number (888-742-1338) on
+    its site. There is no developer support channel, no forum, no help center and no issue tracker,
+    so no `Support` pointer is emitted.
+changelog:
+  url: null
+  detail: >-
+    No API changelog. The company's /news/ archive (28 posts, wired as BlogRSS in apis.yml) is a
+    corporate press-release feed, not a release-notes surface for this API, so no `ChangeLog`
+    pointer is emitted.
+observed_freshness:
+  api_index_fetched: '2026-08-05'
+  most_recent_post: '2026-07-06'
+  most_recent_page_modified: '2026-04-02'
+  most_recent_media: '2026-06-12'
+  route_count: 491
+  detail: >-
+    Content is actively maintained — the newest post is Incyte's completed acquisition of Vega
+    Therapeutics, dated 2026-07-06, one month before this pass.
+platform:
+  cms: WordPress
+  page_builder: Elementor 4.1.4
+  theme_family: Avada (avada_faq / avada_portfolio custom post types registered)
+  hosting: WP Engine
+  cdn: Cloudflare
+  detail: >-
+    Staging hostnames leak into content guid fields (startherastg.wpengine.com,
+    startheradev2.wpenginepowered.com), confirming a WP Engine staging-to-production workflow.
