@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "efb66135-2e06-471f-a032-3844fab63834",
+      "name": "custom-types",
+      "description": {
+        "content": "Avada theme custom post types (avada_faq, avada_portfolio). Registered and anonymously reachable, but both report zero published items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f56fba42-ab5c-4ae5-8fbd-1a47ebd8d916",
+          "name": "List Avada FAQ items",
+          "request": {
+            "name": "List Avada FAQ items",
+            "description": {
+              "content": "Lists items of the `avada_faq` custom post type registered by the Avada theme. Anonymously reachable but empty on this deployment (`X-WP-Total: 0`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "avada_faq"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "context",
+                  "value": "view",
+                  "description": "Scope under which the request is made; determines fields present in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Current page of the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Maximum number of items to be returned in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Limit results to those matching a string."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Order sort attribute ascending or descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Limit result set to items with one or more specific slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Limit result set to items with one or more specific slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "faq_category",
+                  "value": "<integer>",
+                  "description": "Limit result set to items with specific faq_category terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "faq_category",
+                  "value": "<integer>",
+                  "description": "Limit result set to items with specific faq_category terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "faq_category_exclude",
+                  "value": "<integer>",
+                  "description": "Limit result set to items except those with specific faq_category terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "faq_category_exclude",
+                  "value": "<integer>",
+                  "description": "Limit result set to items except those with specific faq_category terms."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d712ef7b-e2ae-45d3-b642-c421fc673dbf",
+              "name": "A page of FAQ items (empty on this deployment)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "avada_faq"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "context",
+                      "value": "view"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "faq_category",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "faq_category",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "faq_category_exclude",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "faq_category_exclude",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of matching items.",
+                  "key": "X-WP-Total",
+                  "value": "1177"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 21,\n    \"date\": \"1976-05-09T10:32:00.990Z\",\n    \"date_gmt\": \"1990-02-04T09:48:52.231Z\",\n    \"guid\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"modified\": \"2020-11-08T06:49:24.055Z\",\n    \"modified_gmt\": \"2002-05-15T19:40:01.263Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"link\": \"https://bvtEYfiLmKqdgEvvXCsTbfdQnvvxHMhn.vqbhk.RUPL5b\",\n    \"title\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"content\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"excerpt\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"author\": 7977,\n    \"author_info\": {},\n    \"featured_media\": 5392,\n    \"featured_image_src\": \"string\",\n    \"featured_image_src_square\": \"string\",\n    \"comment_status\": \"open\",\n    \"ping_status\": \"closed\",\n    \"sticky\": false,\n    \"template\": \"string\",\n    \"format\": \"string\",\n    \"meta\": {},\n    \"categories\": [\n      426,\n      1395\n    ],\n    \"tags\": [\n      5283,\n      3292\n    ],\n    \"class_list\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yoast_head\": \"string\",\n    \"yoast_head_json\": {},\n    \"_links\": {}\n  },\n  {\n    \"id\": 2683,\n    \"date\": \"1968-03-26T22:24:40.413Z\",\n    \"date_gmt\": \"1947-04-12T15:32:07.066Z\",\n    \"guid\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"modified\": \"2026-07-15T14:22:32.012Z\",\n    \"modified_gmt\": \"1997-03-19T13:31:24.360Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"link\": \"https://zbsemCEEnwaMstvmbszWvDEuDGCG.uozNCCr4hu,TI+WyiqyypG9NvMI2KbdgXYKCC8\",\n    \"title\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"content\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"excerpt\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"author\": 4154,\n    \"author_info\": {},\n    \"featured_media\": 8113,\n    \"featured_image_src\": \"string\",\n    \"featured_image_src_square\": \"string\",\n    \"comment_status\": \"closed\",\n    \"ping_status\": \"open\",\n    \"sticky\": false,\n    \"template\": \"string\",\n    \"format\": \"string\",\n    \"meta\": {},\n    \"categories\": [\n      9842,\n      9769\n    ],\n    \"tags\": [\n      9185,\n      1363\n    ],\n    \"class_list\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yoast_head\": \"string\",\n    \"yoast_head_json\": {},\n    \"_links\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93a79051-8f4a-402f-8883-fcede395d044",
+          "name": "List Avada portfolio items",
+          "request": {
+            "name": "List Avada portfolio items",
+            "description": {
+              "content": "Lists items of the `avada_portfolio` custom post type registered by the Avada theme. Anonymously reachable but empty on this deployment (`X-WP-Total: 0`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "avada_portfolio"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "context",
+                  "value": "view",
+                  "description": "Scope under which the request is made; determines fields present in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Current page of the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Maximum number of items to be returned in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Limit results to those matching a string."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Order sort attribute ascending or descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Limit result set to items with one or more specific slugs."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Limit result set to items with one or more specific slugs."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bcc3f12-d03d-4f02-98ad-ec7ff569bfc0",
+              "name": "A page of portfolio items (empty on this deployment)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "avada_portfolio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "context",
+                      "value": "view"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of matching items.",
+                  "key": "X-WP-Total",
+                  "value": "1177"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9950,\n    \"date\": \"2009-03-18T00:33:58.703Z\",\n    \"date_gmt\": \"1993-07-24T21:51:41.846Z\",\n    \"guid\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"modified\": \"2011-03-17T06:53:55.897Z\",\n    \"modified_gmt\": \"2021-11-25T14:18:25.325Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"link\": \"http://hkSquDbavUWaMM.djfxgbxbIlcmHBjeGlcVH4,U9xB\",\n    \"title\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"content\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"excerpt\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"author\": 9203,\n    \"author_info\": {},\n    \"featured_media\": 1936,\n    \"featured_image_src\": \"string\",\n    \"featured_image_src_square\": \"string\",\n    \"comment_status\": \"closed\",\n    \"ping_status\": \"closed\",\n    \"sticky\": true,\n    \"template\": \"string\",\n    \"format\": \"string\",\n    \"meta\": {},\n    \"categories\": [\n      5437,\n      7398\n    ],\n    \"tags\": [\n      9362,\n      1726\n    ],\n    \"class_list\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yoast_head\": \"string\",\n    \"yoast_head_json\": {},\n    \"_links\": {}\n  },\n  {\n    \"id\": 7127,\n    \"date\": \"2000-05-25T15:21:29.010Z\",\n    \"date_gmt\": \"1983-03-02T06:28:32.419Z\",\n    \"guid\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"modified\": \"1956-05-04T06:02:52.617Z\",\n    \"modified_gmt\": \"1994-09-14T04:25:54.232Z\",\n    \"slug\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"link\": \"http://jbPPJzsJb.bmqLXMHE3mDbw.SnftPVVFkfe\",\n    \"title\": {\n      \"rendered\": \"string\",\n      \"protected\": false\n    },\n    \"content\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"excerpt\": {\n      \"rendered\": \"string\",\n      \"protected\": true\n    },\n    \"author\": 8932,\n    \"author_info\": {},\n    \"featured_media\": 896,\n    \"featured_image_src\": \"string\",\n    \"featured_image_src_square\": \"string\",\n    \"comment_status\": \"open\",\n    \"ping_status\": \"open\",\n    \"sticky\": false,\n    \"template\": \"string\",\n    \"format\": \"string\",\n    \"meta\": {},\n    \"categories\": [\n      6843,\n      5053\n    ],\n    \"tags\": [\n      3718,\n      5118\n    ],\n    \"class_list\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yoast_head\": \"string\",\n    \"yoast_head_json\": {},\n    \"_links\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://star-therapeutics.com/wp-json",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "356871bc-557e-419b-a8bb-d0c9dcab1787",
+    "name": "Star Therapeutics Content Custom Types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.\n\nContact Support:\n Name: Star Therapeutics\n Email: info@star-therapeutics.com",
+      "type": "text/plain"
+    }
+  }
+}

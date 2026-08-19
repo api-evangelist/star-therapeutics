@@ -1,0 +1,41 @@
+{
+  "provider": "star-therapeutics",
+  "sources": [
+    "star-therapeutics-comments-api-openapi.yml",
+    "star-therapeutics-custom-types-api-openapi.yml",
+    "star-therapeutics-discovery-api-openapi.yml",
+    "star-therapeutics-media-api-openapi.yml",
+    "star-therapeutics-oembed-api-openapi.yml",
+    "star-therapeutics-pages-api-openapi.yml",
+    "star-therapeutics-posts-api-openapi.yml",
+    "star-therapeutics-search-api-openapi.yml",
+    "star-therapeutics-taxonomy-api-openapi.yml"
+  ],
+  "outputs": [
+    "star-therapeutics-comments-api-openapi.yml",
+    "star-therapeutics-custom-types-api-openapi.yml",
+    "star-therapeutics-discovery-api-openapi.yml",
+    "star-therapeutics-media-api-openapi.yml",
+    "star-therapeutics-oembed-api-openapi.yml",
+    "star-therapeutics-pages-api-openapi.yml",
+    "star-therapeutics-posts-api-openapi.yml",
+    "star-therapeutics-search-api-openapi.yml",
+    "star-therapeutics-taxonomy-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "star-therapeutics-comments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-custom-types-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-discovery-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-media-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-oembed-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-pages-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-posts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "star-therapeutics-taxonomy-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

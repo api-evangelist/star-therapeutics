@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "1070bf69-d8c8-49a1-aa32-d042557f6901",
+      "name": "oembed",
+      "description": {
+        "content": "oEmbed 1.0 provider endpoint for star-therapeutics.com URLs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9635819-fcef-4546-81bf-78971c4cc96d",
+          "name": "Get an oEmbed response for a star-therapeutics.com URL",
+          "request": {
+            "name": "Get an oEmbed response for a star-therapeutics.com URL",
+            "description": {
+              "content": "The oEmbed 1.0 provider endpoint. Returns provider name, title, author, thumbnail and an iframe embed for any URL on star-therapeutics.com.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "oembed",
+                "1.0",
+                "embed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) The URL of the resource for which to fetch oEmbed data."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "The oEmbed format to use."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxwidth",
+                  "value": "600",
+                  "description": "The maximum width of the embed frame in pixels."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a9c1b19-d554-45c4-b0bb-3589c26fdec0",
+              "name": "An oEmbed 1.0 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oembed",
+                    "1.0",
+                    "embed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "maxwidth",
+                      "value": "600"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"provider_name\": \"string\",\n  \"provider_url\": \"https://ULomiSicxfAHauzTGeeNxQSPWPYaNEe.jfM2Wu-RYVb7gS0T-1Sa62QJazyPaZGMmo-0+OU,KHQqWjAQRxoenBuqFR4s\",\n  \"author_name\": \"string\",\n  \"author_url\": \"http://LnfABSFIZoZuXIUxFKPmxnprJcbSCmqIm.iwhuZ9UogyDyV5b46ucRzUfQoojPa0,N6D7NnHpAcryualv\",\n  \"title\": \"string\",\n  \"type\": \"string\",\n  \"width\": 3285,\n  \"height\": 9975,\n  \"html\": \"string\",\n  \"thumbnail_url\": \"https://elDufdIpBPUMZzdCFNwA.jfsadrz\",\n  \"thumbnail_width\": 4532,\n  \"thumbnail_height\": 1814\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09e6cec3-4743-44d3-a10e-00c94be0f0b3",
+              "name": "Object not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oembed",
+                    "1.0",
+                    "embed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "maxwidth",
+                      "value": "600"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 3006,\n    \"params\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"details\": {\n      \"key_0\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://star-therapeutics.com/wp-json",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "53579f18-ce06-471e-8eca-cde89bcfac55",
+    "name": "Star Therapeutics Content Oembed API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.\n\nContact Support:\n Name: Star Therapeutics\n Email: info@star-therapeutics.com",
+      "type": "text/plain"
+    }
+  }
+}

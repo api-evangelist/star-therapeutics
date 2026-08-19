@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Star Therapeutics Content Custom Types API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "custom-types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Avada FAQ items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://star-therapeutics.com/wp-json/wp/v2/avada_faq",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in the response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in the result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order sort attribute ascending or descending."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to items with one or more specific slugs."
+              },
+              {
+                "name": "faq_category",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to items with specific faq_category terms."
+              },
+              {
+                "name": "faq_category_exclude",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to items except those with specific faq_category terms."
+              }
+            ]
+          },
+          "docs": "Lists items of the `avada_faq` custom post type registered by the Avada theme. Anonymously reachable but empty on this deployment (`X-WP-Total: 0`)."
+        },
+        {
+          "info": {
+            "name": "List Avada portfolio items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://star-therapeutics.com/wp-json/wp/v2/avada_portfolio",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in the response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in the result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order sort attribute ascending or descending."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to items with one or more specific slugs."
+              }
+            ]
+          },
+          "docs": "Lists items of the `avada_portfolio` custom post type registered by the Avada theme. Anonymously reachable but empty on this deployment (`X-WP-Total: 0`)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
