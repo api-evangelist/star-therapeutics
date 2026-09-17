@@ -157,26 +157,6 @@ apis:
     url: conventions/star-therapeutics-conventions.yml
   - type: DataModel
     url: data-model/star-therapeutics-data-model.yml
-- aid: star-therapeutics:star-therapeutics-oembed-api
-  name: Star Therapeutics Oembed API
-  description: oEmbed 1.0 provider endpoint for star-therapeutics.com URLs.
-  humanURL: https://developer.wordpress.org/rest-api/
-  baseURL: https://star-therapeutics.com/wp-json
-  tags:
-  - oEmbed
-  tags_raw:
-  - oembed
-  properties:
-  - type: OpenAPI
-    url: openapi/star-therapeutics-oembed-api-openapi.yml
-  - type: Authentication
-    url: authentication/star-therapeutics-authentication.yml
-  - type: ErrorCatalog
-    url: errors/star-therapeutics-problem-types.yml
-  - type: Conventions
-    url: conventions/star-therapeutics-conventions.yml
-  - type: DataModel
-    url: data-model/star-therapeutics-data-model.yml
 - aid: star-therapeutics:star-therapeutics-pages-api
   name: Star Therapeutics Pages API
   description: Corporate pages (11 published at harvest time).
@@ -252,6 +232,24 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/star-therapeutics-taxonomy-api-openapi.yml
+  - type: Authentication
+    url: authentication/star-therapeutics-authentication.yml
+  - type: ErrorCatalog
+    url: errors/star-therapeutics-problem-types.yml
+  - type: Conventions
+    url: conventions/star-therapeutics-conventions.yml
+  - type: DataModel
+    url: data-model/star-therapeutics-data-model.yml
+- aid: star-therapeutics:star-therapeutics-o-embed-api
+  name: Star Therapeutics o Embed API
+  description: oEmbed 1.0 provider endpoint for star-therapeutics.com URLs.
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://star-therapeutics.com/wp-json
+  tags:
+  - o Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/star-therapeutics-o-embed-api-openapi.yml
   - type: Authentication
     url: authentication/star-therapeutics-authentication.yml
   - type: ErrorCatalog
