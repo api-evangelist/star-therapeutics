@@ -3,7 +3,7 @@ info:
   title: Star Therapeutics Content Search API
   version: wp/v2
   summary: Anonymously readable WordPress REST content API behind star-therapeutics.com.
-  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.
+  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json.
   contact:
     name: Star Therapeutics
     url: https://star-therapeutics.com/
@@ -13,13 +13,13 @@ servers:
 - url: https://star-therapeutics.com/wp-json
   description: Production content API
 tags:
-- name: search
+- name: Search
   description: Cross-content search across published objects.
 paths:
   /wp/v2/search:
     get:
       tags:
-      - search
+      - Search
       operationId: searchContent
       summary: Search published content
       description: Cross-content search across published objects. A query for `star` returned 68 matches at harvest time. Each result is a lightweight pointer (id, title, url, type, subtype) that can be resolved against the posts, pages or media collections.
@@ -76,23 +76,6 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: Maximum number of items to be returned in the result set.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Page:
-      name: page
-      in: query
-      description: Current page of the collection.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     Include:
       name: include
       in: query
@@ -101,6 +84,14 @@ components:
         type: array
         items:
           type: integer
+    Page:
+      name: page
+      in: query
+      description: Current page of the collection.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     Exclude:
       name: exclude
       in: query
@@ -120,6 +111,15 @@ components:
         - embed
         - edit
         default: view
+    PerPage:
+      name: per_page
+      in: query
+      description: Maximum number of items to be returned in the result set.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   schemas:
     SearchResult:
       type: object

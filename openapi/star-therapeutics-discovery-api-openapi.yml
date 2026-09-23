@@ -3,7 +3,7 @@ info:
   title: Star Therapeutics Content Discovery API
   version: wp/v2
   summary: Anonymously readable WordPress REST content API behind star-therapeutics.com.
-  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.
+  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json.
   contact:
     name: Star Therapeutics
     url: https://star-therapeutics.com/
@@ -13,13 +13,13 @@ servers:
 - url: https://star-therapeutics.com/wp-json
   description: Production content API
 tags:
-- name: discovery
+- name: Discovery
   description: Route, type, taxonomy and status discovery documents.
 paths:
   /:
     get:
       tags:
-      - discovery
+      - Discovery
       operationId: getApiIndex
       summary: Get the REST API index
       description: Returns the site index — name, description, URL, home, the registered namespaces, the authentication methods, the site logo and icon, and the full 491-entry route table.
@@ -42,7 +42,7 @@ paths:
   /wp/v2/types:
     get:
       tags:
-      - discovery
+      - Discovery
       operationId: listPostTypes
       summary: List registered post types
       description: Returns every registered post type keyed by slug. Nineteen are registered on this deployment, including the WordPress core types plus `avada_portfolio`, `avada_faq`, `elementor_library`, `elementor_snippet`, `elementskit_content`, `elementskit_template`, `e-floating-buttons` and `jet-engine`.
@@ -60,7 +60,7 @@ paths:
   /wp/v2/types/{type}:
     get:
       tags:
-      - discovery
+      - Discovery
       operationId: getPostType
       summary: Get a registered post type
       description: Returns a single registered post type by slug.
@@ -86,7 +86,7 @@ paths:
   /wp/v2/taxonomies:
     get:
       tags:
-      - discovery
+      - Discovery
       operationId: listTaxonomies
       summary: List registered taxonomies
       description: Returns every registered taxonomy keyed by slug. Eight are registered on this deployment — `category`, `post_tag`, `nav_menu`, `wp_pattern_category`, `portfolio_category`, `portfolio_skills`, `portfolio_tags` and `faq_category`.
@@ -109,7 +109,7 @@ paths:
   /wp/v2/statuses:
     get:
       tags:
-      - discovery
+      - Discovery
       operationId: listStatuses
       summary: List post statuses
       description: Returns the post statuses visible to the caller. Anonymously this deployment returns only `publish`.
@@ -126,6 +126,83 @@ paths:
                   type: object
 components:
   schemas:
+    ApiIndex:
+      type: object
+      description: The REST API site index.
+      properties:
+        name:
+          type: string
+          examples:
+          - STAR Therapeutics
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+        home:
+          type: string
+          format: uri
+        gmt_offset:
+          type: number
+        timezone_string:
+          type: string
+          examples:
+          - America/Chicago
+        namespaces:
+          type: array
+          items:
+            type: string
+        authentication:
+          description: Registered authentication methods. Empty on this deployment.
+          anyOf:
+          - type: array
+          - type: object
+        routes:
+          type: object
+          description: The full route table keyed by route pattern.
+        site_logo:
+          type: integer
+        site_icon_url:
+          type: string
+          format: uri
+        _links:
+          type: object
+    Error:
+      type: object
+      description: The WordPress REST error envelope. Not RFC 9457 problem+json.
+      required:
+      - code
+      - message
+      - data
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          examples:
+          - rest_post_invalid_id
+        message:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - Invalid post ID.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
+              examples:
+              - 404
+            params:
+              type: object
+              description: Per-parameter messages, present on rest_invalid_param.
+              additionalProperties:
+                type: string
+            details:
+              type: object
+              description: Per-parameter structured detail, present on rest_invalid_param.
+              additionalProperties:
+                type: object
     Taxonomy:
       type: object
       description: A registered taxonomy.
@@ -176,83 +253,6 @@ components:
           type: string
         rest_namespace:
           type: string
-        _links:
-          type: object
-    Error:
-      type: object
-      description: The WordPress REST error envelope. Not RFC 9457 problem+json.
-      required:
-      - code
-      - message
-      - data
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          examples:
-          - rest_post_invalid_id
-        message:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - Invalid post ID.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: The HTTP status code.
-              examples:
-              - 404
-            params:
-              type: object
-              description: Per-parameter messages, present on rest_invalid_param.
-              additionalProperties:
-                type: string
-            details:
-              type: object
-              description: Per-parameter structured detail, present on rest_invalid_param.
-              additionalProperties:
-                type: object
-    ApiIndex:
-      type: object
-      description: The REST API site index.
-      properties:
-        name:
-          type: string
-          examples:
-          - STAR Therapeutics
-        description:
-          type: string
-        url:
-          type: string
-          format: uri
-        home:
-          type: string
-          format: uri
-        gmt_offset:
-          type: number
-        timezone_string:
-          type: string
-          examples:
-          - America/Chicago
-        namespaces:
-          type: array
-          items:
-            type: string
-        authentication:
-          description: Registered authentication methods. Empty on this deployment.
-          anyOf:
-          - type: array
-          - type: object
-        routes:
-          type: object
-          description: The full route table keyed by route pattern.
-        site_logo:
-          type: integer
-        site_icon_url:
-          type: string
-          format: uri
         _links:
           type: object
   responses:

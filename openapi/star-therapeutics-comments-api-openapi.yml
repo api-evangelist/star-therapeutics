@@ -3,7 +3,7 @@ info:
   title: Star Therapeutics Content Comments API
   version: wp/v2
   summary: Anonymously readable WordPress REST content API behind star-therapeutics.com.
-  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.
+  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json.
   contact:
     name: Star Therapeutics
     url: https://star-therapeutics.com/
@@ -13,13 +13,13 @@ servers:
 - url: https://star-therapeutics.com/wp-json
   description: Production content API
 tags:
-- name: comments
+- name: Comments
   description: Comment collection. Registered and reachable, but empty — no post on this deployment carries comments.
 paths:
   /wp/v2/comments:
     get:
       tags:
-      - comments
+      - Comments
       operationId: listComments
       summary: List comments
       description: 'Lists approved comments. Anonymously reachable but empty on this deployment (`X-WP-Total: 0`) — no Star Therapeutics news item carries comments.'
@@ -72,43 +72,6 @@ paths:
                   type: object
 components:
   parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: Maximum number of items to be returned in the result set.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Page:
-      name: page
-      in: query
-      description: Current page of the collection.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    Offset:
-      name: offset
-      in: query
-      description: Offset the result set by a specific number of items.
-      schema:
-        type: integer
-    After:
-      name: after
-      in: query
-      description: Limit response to posts published after a given ISO 8601 compliant date.
-      schema:
-        type: string
-        format: date-time
-    Before:
-      name: before
-      in: query
-      description: Limit response to posts published before a given ISO 8601 compliant date.
-      schema:
-        type: string
-        format: date-time
     Include:
       name: include
       in: query
@@ -117,12 +80,27 @@ components:
         type: array
         items:
           type: integer
-    Search:
-      name: search
+    Offset:
+      name: offset
       in: query
-      description: Limit results to those matching a string.
+      description: Offset the result set by a specific number of items.
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      description: Current page of the collection.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    After:
+      name: after
+      in: query
+      description: Limit response to posts published after a given ISO 8601 compliant date.
       schema:
         type: string
+        format: date-time
     Exclude:
       name: exclude
       in: query
@@ -131,6 +109,23 @@ components:
         type: array
         items:
           type: integer
+    Order:
+      name: order
+      in: query
+      description: Order sort attribute ascending or descending.
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    Before:
+      name: before
+      in: query
+      description: Limit response to posts published before a given ISO 8601 compliant date.
+      schema:
+        type: string
+        format: date-time
     Context:
       name: context
       in: query
@@ -142,13 +137,18 @@ components:
         - embed
         - edit
         default: view
-    Order:
-      name: order
+    PerPage:
+      name: per_page
       in: query
-      description: Order sort attribute ascending or descending.
+      description: Maximum number of items to be returned in the result set.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Search:
+      name: search
+      in: query
+      description: Limit results to those matching a string.
       schema:
         type: string
-        enum:
-        - asc
-        - desc
-        default: desc

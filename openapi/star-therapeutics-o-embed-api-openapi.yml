@@ -3,7 +3,7 @@ info:
   title: Star Therapeutics Content Oembed API
   version: wp/v2
   summary: Anonymously readable WordPress REST content API behind star-therapeutics.com.
-  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json. Star Therapeutics is a clinical-stage biotechnology company in South San Francisco developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke model whose spokes include Vega Therapeutics (VGA039, von Willebrand disease) and Electra Therapeutics (ELA-026, secondary HLH). It runs no developer program and markets no product API. This document is an API Evangelist derivation of the WordPress `wp/v2` and `oembed/1.0` route index the site publishes at /wp-json/, restricted to the operations that were verified to return data anonymously on 2026-08-05. Write operations, `/wp/v2/users`, `/wp/v2/settings`, `/wp/v2/menus`, `/wp/v2/themes`, `/wp/v2/plugins`, `/wp/v2/block-types`, `/wp/v2/font-collections`, `/wp/v2/icons`, the `wp-abilities/v1` namespace, the `jet-engine/v1` MCP namespace and the whole plugin-administration surface all require authentication and are deliberately excluded — see x-api-evangelist-provenance.
+  description: The read-only content surface Star Therapeutics exposes at https://star-therapeutics.com/wp-json.
   contact:
     name: Star Therapeutics
     url: https://star-therapeutics.com/
@@ -13,13 +13,13 @@ servers:
 - url: https://star-therapeutics.com/wp-json
   description: Production content API
 tags:
-- name: oembed
+- name: o Embed
   description: oEmbed 1.0 provider endpoint for star-therapeutics.com URLs.
 paths:
   /oembed/1.0/embed:
     get:
       tags:
-      - oembed
+      - o Embed
       operationId: getOembed
       summary: Get an oEmbed response for a star-therapeutics.com URL
       description: The oEmbed 1.0 provider endpoint. Returns provider name, title, author, thumbnail and an iframe embed for any URL on star-therapeutics.com.
@@ -58,13 +58,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Object not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -142,3 +135,10 @@ components:
           type: integer
         thumbnail_height:
           type: integer
+  responses:
+    NotFound:
+      description: Object not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
