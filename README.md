@@ -64,35 +64,106 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Star Therapeutics is a clinical-stage biotechnology company in South San Francisco, California,
-developing best-in-class antibody therapies in hematology and immunology under a hub-and-spoke
-model. Each spoke pursues a distinct area of novel biology and advances a single antibody across
-multiple related indications — a "pipeline-in-a-product" strategy. Its named spokes are Vega
-Therapeutics (VGA039, a first-in-class anti-Protein S monoclonal antibody for von Willebrand
-disease) and Electra Therapeutics (ELA-026, targeting SIRP proteins in secondary HLH). The company
-emerged from stealth in February 2022, added $90M in 2023, and closed an oversubscribed $125M
-Series D in September 2025; Incyte completed its acquisition of Vega Therapeutics in July 2026.
+Star Therapeutics is a clinical-stage biotechnology company headquartered at 201 Haskins Way in South San Francisco, California, that transforms the lives of patients with serious diseases by discovering and developing best-in-class antibody therapies, with an initial focus on hematology and immunology. It operates a hub-and-spoke model, building a family of companies that each pursue a distinct area of novel biology, and it develops each programme under a pipeline-in-a-product strategy in which a single antibody is advanced across multiple related indications rather than one. The company emerged from stealth in February 2022 having raised $100 million since inception, added a $90 million round in September 2023, and closed an oversubscribed $125 million Series D in September 2025 to move its lead asset into a registrational programme. Its two named spokes are Vega Therapeutics, whose VGA039 is a first-in-class monoclonal antibody against Protein S developed as a subcutaneous therapy for von Willebrand disease and other bleeding disorders, and Electra Therapeutics, which targets SIRP proteins with ELA-026 in secondary hemophagocytic lymphohistiocytosis. VGA039 has received FDA Orphan Drug, Fast Track, Rare Pediatric Disease and Breakthrough Therapy designations; Incyte completed its acquisition of Vega Therapeutics, a wholly owned subsidiary of Star Therapeutics, in July 2026. Star Therapeutics runs no developer program and publishes no product API, developer portal, or API documentation. The only machine-readable surface reachable without credentials is the WordPress REST content API behind star-therapeutics.com, catalogued here.
 
-## API surface
+**Areas:** Company · Biotechnology · Pharmaceuticals · Hematology · Immunology · Rare Disease · Antibody Therapeutics · Clinical Trials · Life Sciences · content-api
 
-**Star Therapeutics runs no developer program.** It publishes no product API, no developer portal,
-no API documentation, no SDKs and no OpenAPI. The only machine-readable surface reachable without
-credentials is the **WordPress REST content API** behind `star-therapeutics.com`, which serves the
-company's 28-item news archive, 11 corporate pages and 661-item media library. The OpenAPI in this
-repo is an API Evangelist derivation of the route index the site publishes at `/wp-json/`, verified
-against live anonymous responses on 2026-08-05.
+## Star Therapeutics on APIs.io
 
-Notably, the site registers two agent-facing capability registries — a JetEngine MCP server at
-`/wp-json/jet-engine/v1/mcp` and the WordPress Abilities API at `/wp-json/wp-abilities/v1/` — but a
-JSON-RPC `tools/list` POST returns `401 rest_forbidden` and every abilities route returns 401. Both
-are plugin defaults bound to an authenticated WordPress user, not an agent surface the company
-publishes, so no MCP server is claimed for this provider. No agent card is served at either
-`/.well-known/agent-card.json` or `/.well-known/agent.json` (both 404).
+Everything profiled for Star Therapeutics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/star-therapeutics/](https://apis.io/providers/star-therapeutics/)** — or go straight to one of the APIs or properties below.
 
-## Links
+### APIs (1)
 
-- https://star-therapeutics.com/
-- https://star-therapeutics.com/news/
-- https://www.linkedin.com/company/star-tx
-- https://vegatherapeutics.com/ · https://electra-therapeutics.com/
-- https://forgeglobal.com/star-therapeutics_stock/
+- [Star Therapeutics Website (WordPress REST)](https://apis.io/apis/star-therapeutics/star-therapeutics-com-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the Star Therapeutics website at star-therapeutics.com: the route index of the site's content management system,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-comments-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-custom-types-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-discovery-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-media-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-oembed-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-pages-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-posts-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-search-api/)
+- [Moved to /providers/star-therapeutics/](https://apis.io/collections/star-therapeutics/open-star-therapeutics-taxonomy-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Star Therapeutics Content Overlay](https://apis.io/overlays/star-therapeutics/star-therapeutics-content-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Star Therapeutics Authentication](https://apis.io/security/star-therapeutics/star-therapeutics-authentication/)
+- [Star Therapeutics Domain Security](https://apis.io/security/star-therapeutics/star-therapeutics-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://star-therapeutics.com/)
+- [Terms of service](https://star-therapeutics.com/terms-of-use/)
+- [Privacy policy](https://star-therapeutics.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 16.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.9 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 23.2 |
+| Access clarity | 21.1 |
+
+**Agent readiness 4.1** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.5** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/star-therapeutics/](https://apis.io/providers/star-therapeutics/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Star Therapeutics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/star-therapeutics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
